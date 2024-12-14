@@ -1,0 +1,17 @@
+[tool.poetry]
+packages = [{include = "smart_hive", from = "src"}]
+name = "smart-hive"
+version = "0.1.0"
+description = "Ecosistema SmartHive basado en agentes inteligentes."
+authors = ["Tu Nombre"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pytest = "^8.3.4"
+swarm = {git = "https://github.com/openai/swarm.git"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
