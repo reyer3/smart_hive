@@ -3,8 +3,9 @@ packages = [{include = "smart_hive", from = "src"}]
 name = "smart-hive"
 version = "0.1.0"
 description = "Ecosistema SmartHive basado en agentes inteligentes."
-authors = ["Tu Nombre"]
+authors = ["Ricardo Reyes <reyesramirezricardoemanuel@gmail.com>"]
 readme = "README.md"
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -15,3 +16,12 @@ swarm = {git = "https://github.com/openai/swarm.git"}
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+run-tests = "smart_hive.scripts:run_tests"
+
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--strict-markers"
+
