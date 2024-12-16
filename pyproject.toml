@@ -11,7 +11,9 @@ license = "MIT"
 python = "^3.12"
 pytest = "^8.3.4"
 swarm = {git = "https://github.com/openai/swarm.git"}
-
+mkdocs = "^1.6.1"
+mkdocs-material = "^9.5.48"
+mkdocs-minify-plugin = "^0.7.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -24,4 +26,3 @@ run-tests = "smart_hive.scripts:run_tests"
 [tool.pytest.ini_options]
 minversion = "6.0"
 addopts = "--strict-markers"
-
