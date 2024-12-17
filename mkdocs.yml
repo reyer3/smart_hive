@@ -1,8 +1,10 @@
 site_name: SmartHive Documentation
 site_description: Documentación del ecosistema SmartHive basado en agentes inteligentes
 site_author: Ricardo Reyes
-repo_url: https://github.com/yourusername/smart_hive
+repo_url: https://github.com/reyer3/smart_hive
 repo_name: smart_hive
+docs_dir: docs
+site_dir: site
 
 theme:
   font:
@@ -78,7 +80,7 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/yourusername
+      link: https://github.com/reyer3
       name: GitHub
   analytics:
     provider: google
