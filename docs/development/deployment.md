@@ -5,36 +5,75 @@
 ### 1.1. Componentes
 ```plaintext
 SmartHive Deployment
-├── Agent Swarm
-│   ├── OrchestratorAgent
-│   ├── BackendAgent
-│   ├── FrontendAgent
-│   ├── DatabaseAgent
-│   ├── QAAgent
-│   └── DevOpsAgent
+├── Control Plane
+│   ├── Message Queue
+│   ├── Orchestrator
+│   └── Monitor
+├── Agent Services
+│   ├── ResourceManager
+│   ├── TaskCoordinator
+│   ├── ErrorHandler
+│   ├── Backend
+│   ├── Frontend
+│   └── QA
 ├── Infrastructure
 │   ├── API Gateway
 │   ├── Load Balancer
-│   ├── Message Queue
-│   └── Monitoring
+│   └── Service Discovery
 └── Storage
-    ├── PostgreSQL
-    ├── Redis
-    └── Object Storage
+    ├── Vector Store
+    ├── Document Store
+    └── Message Store
 ```
 
 ### 1.2. Tecnologías
+- **Framework:** llama-agents
 - **Containerization:** Docker
 - **Orchestration:** Kubernetes
 - **CI/CD:** GitHub Actions
-- **Monitoring:** Prometheus + Grafana
+- **Monitoring:** llama-agents monitor + Prometheus + Grafana
 - **Logging:** ELK Stack
 
-## 2. Configuración de Contenedores
+## 2. Configuración de Servicios
 
-### 2.1. Base Image
+### 2.1. Control Plane
+```python
+# control_plane.py
+from llama_agents import ControlPlaneServer, AgentOrchestrator, SimpleMessageQueue
+from llama_index.llms.openai import OpenAI
+
+def setup_control_plane():
+    message_queue = SimpleMessageQueue()
+    control_plane = ControlPlaneServer(
+        message_queue=message_queue,
+        orchestrator=AgentOrchestrator(llm=OpenAI())
+    )
+    return control_plane, message_queue
+```
+
+### 2.2. Agent Service
+```python
+# agent_service.py
+from llama_agents import AgentService
+from llama_index.core.agent import FunctionCallingAgentWorker
+
+def create_agent_service(name: str, description: str, tools: list):
+    worker = FunctionCallingAgentWorker.from_tools(tools, llm=OpenAI())
+    agent = worker.as_agent()
+    
+    return AgentService(
+        agent=agent,
+        message_queue=message_queue,
+        description=description,
+        service_name=name
+    )
+```
+
+## 3. Containerización
+
+### 3.1. Base Image
 ```dockerfile
-# Dockerfile.agent
+# Dockerfile.base
 FROM python:3.11-slim
 
 WORKDIR /app
@@ -45,311 +84,182 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Instalar Poetry
-RUN curl -sSL https://install.python-poetry.org | python3 -
-
-# Copiar archivos del proyecto
-COPY pyproject.toml poetry.lock ./
-COPY src/ ./src/
-
 # Instalar dependencias
-RUN poetry config virtualenvs.create false \
-    && poetry install --no-dev --no-interaction --no-ansi
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Script de inicio
-COPY scripts/start-agent.sh ./
-RUN chmod +x start-agent.sh
-
-ENTRYPOINT ["./start-agent.sh"]
+# Copiar código
+COPY smart_hive/ ./smart_hive/
 ```
 
-### 2.2. Agent-Specific Images
+### 3.2. Service Images
 ```dockerfile
-# Dockerfile.backend-agent
-FROM smarthive/base-agent:latest
+# Dockerfile.control-plane
+FROM smarthive/base:latest
 
-ENV AGENT_TYPE=backend
-ENV AGENT_CONFIG=/etc/smarthive/backend-config.yaml
+ENV SERVICE_TYPE=control-plane
+EXPOSE 8000
 
-COPY configs/backend-config.yaml /etc/smarthive/
+CMD ["python", "-m", "smart_hive.services.control_plane"]
 
-CMD ["backend"]
+# Dockerfile.agent-service
+FROM smarthive/base:latest
+
+ARG SERVICE_NAME
+ENV SERVICE_NAME=${SERVICE_NAME}
+EXPOSE 8080
+
+CMD ["python", "-m", "smart_hive.services.agent_service"]
 ```
 
-## 3. Kubernetes Configuration
+## 4. Kubernetes Configuration
 
-### 3.1. Agent Deployment
+### 4.1. Control Plane Deployment
 ```yaml
-# agent-deployment.yaml
+# control-plane-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-agent
+  name: control-plane
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: control-plane
+  template:
+    metadata:
+      labels:
+        app: control-plane
+    spec:
+      containers:
+      - name: control-plane
+        image: smarthive/control-plane:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: llm-secrets
+              key: openai-api-key
+```
+
+### 4.2. Agent Service Deployment
+```yaml
+# agent-service-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${SERVICE_NAME}
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: backend-agent
+      app: ${SERVICE_NAME}
   template:
     metadata:
       labels:
-        app: backend-agent
+        app: ${SERVICE_NAME}
     spec:
       containers:
-      - name: backend-agent
-        image: smarthive/backend-agent:latest
+      - name: ${SERVICE_NAME}
+        image: smarthive/agent-service:latest
+        ports:
+        - containerPort: 8080
         env:
-        - name: ORCHESTRATOR_URL
-          value: "http://orchestrator-service:8000"
-        - name: REDIS_URL
-          valueFrom:
-            secretKeyRef:
-              name: redis-credentials
-              key: url
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "200m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
+        - name: SERVICE_NAME
+          value: ${SERVICE_NAME}
+        - name: CONTROL_PLANE_URL
+          value: http://control-plane:8000
 ```
 
-### 3.2. Service Configuration
-```yaml
-# agent-service.yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: backend-agent-service
-spec:
-  selector:
-    app: backend-agent
-  ports:
-  - port: 8080
-    targetPort: 8080
-  type: ClusterIP
+## 5. Monitoreo
+
+### 5.1. llama-agents Monitor
+```bash
+# Iniciar monitor
+llama-agents monitor --control-plane-url http://localhost:8000
 ```
 
-## 4. Monitoreo y Logging
-
-### 4.1. Prometheus Configuration
+### 5.2. Prometheus Metrics
 ```yaml
 # prometheus-config.yaml
-global:
-  scrape_interval: 15s
-
 scrape_configs:
-  - job_name: 'agent-metrics'
-    kubernetes_sd_configs:
-      - role: pod
-    relabel_configs:
-      - source_labels: [__meta_kubernetes_pod_label_app]
-        regex: .*agent.*
-        action: keep
+  - job_name: 'smart-hive'
+    static_configs:
+      - targets: ['control-plane:8000']
+    metrics_path: '/metrics'
 ```
 
-### 4.2. Grafana Dashboard
-```json
-{
-  "dashboard": {
-    "panels": [
-      {
-        "title": "Agent Memory Usage",
-        "type": "graph",
-        "datasource": "Prometheus",
-        "targets": [
-          {
-            "expr": "agent_memory_usage_bytes",
-            "legendFormat": "{{agent_type}}"
-          }
-        ]
-      },
-      {
-        "title": "Task Processing Rate",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "rate(tasks_processed_total[5m])",
-            "legendFormat": "{{agent_type}}"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
+## 6. Deployment Scripts
 
-## 5. Escalamiento
-
-### 5.1. Horizontal Pod Autoscaling
-```yaml
-# hpa.yaml
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: backend-agent-hpa
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: backend-agent
-  minReplicas: 3
-  maxReplicas: 10
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
-```
-
-### 5.2. Vertical Pod Autoscaling
-```yaml
-# vpa.yaml
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
-metadata:
-  name: backend-agent-vpa
-spec:
-  targetRef:
-    apiVersion: "apps/v1"
-    kind: Deployment
-    name: backend-agent
-  updatePolicy:
-    updateMode: "Auto"
-```
-
-## 6. Backup y Recuperación
-
-### 6.1. Backup Configuration
-```yaml
-# backup-cronjob.yaml
-apiVersion: batch/v1
-kind: CronJob
-metadata:
-  name: agent-state-backup
-spec:
-  schedule: "0 */6 * * *"
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          containers:
-          - name: backup
-            image: smarthive/backup-tool:latest
-            env:
-            - name: BACKUP_PATH
-              value: "/backups"
-            - name: S3_BUCKET
-              value: "smarthive-backups"
-          restartPolicy: OnFailure
-```
-
-### 6.2. Recovery Procedure
+### 6.1. Deploy All Services
 ```bash
 #!/bin/bash
-# restore-agent-state.sh
+# deploy.sh
 
-# Detener agentes
-kubectl scale deployment --all --replicas=0 -n smarthive
+# Deploy Control Plane
+kubectl apply -f k8s/control-plane/
 
-# Restaurar datos
-kubectl exec -it backup-restore -- ./restore.sh \
-    --backup-id="latest" \
-    --target-namespace="smarthive"
+# Deploy Agent Services
+for service in resource-manager task-coordinator error-handler backend frontend qa; do
+    envsubst < k8s/templates/agent-service.yaml | kubectl apply -f -
+done
 
-# Reiniciar agentes
-kubectl scale deployment --all --replicas=1 -n smarthive
+# Deploy Monitoring
+kubectl apply -f k8s/monitoring/
+```
+
+### 6.2. Scale Services
+```bash
+#!/bin/bash
+# scale.sh
+
+# Scale specific service
+kubectl scale deployment ${SERVICE_NAME} --replicas=${REPLICAS}
+
+# Auto-scaling
+kubectl apply -f k8s/templates/hpa.yaml
 ```
 
 ## 7. CI/CD Pipeline
 
-### 7.1. Build y Test
-```yaml
-# .github/workflows/build.yml
-name: Build and Test
-on: [push, pull_request]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      
-      - name: Build Agent Images
-        run: |
-          docker-compose build
-          
-      - name: Run Tests
-        run: |
-          docker-compose run tests
-          
-      - name: Push Images
-        if: github.ref == 'refs/heads/main'
-        run: |
-          docker-compose push
-```
-
-### 7.2. Deployment
+### 7.1. GitHub Actions Workflow
 ```yaml
 # .github/workflows/deploy.yml
-name: Deploy
+name: Deploy SmartHive
+
 on:
   push:
     branches: [main]
-    
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       
-      - name: Configure kubectl
-        uses: azure/k8s-set-context@v1
-        with:
-          kubeconfig: ${{ secrets.KUBE_CONFIG }}
-          
-      - name: Deploy to Kubernetes
+      - name: Build Images
         run: |
-          kubectl apply -f k8s/
-          kubectl rollout status deployment/backend-agent
+          docker build -t smarthive/base -f Dockerfile.base .
+          docker build -t smarthive/control-plane -f Dockerfile.control-plane .
+          for service in resource-manager task-coordinator error-handler backend frontend qa; do
+            docker build -t smarthive/agent-service:${service} \
+              --build-arg SERVICE_NAME=${service} \
+              -f Dockerfile.agent-service .
+          done
+      
+      - name: Deploy to K8s
+        run: ./scripts/deploy.sh
 ```
 
-## 8. Mantenimiento
-
-### 8.1. Health Checks
-```yaml
-# health-check-config.yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: health-check-config
-data:
-  config.yaml: |
-    endpoints:
-      - name: backend-agent
-        url: http://backend-agent-service:8080/health
-        interval: 30s
-        timeout: 5s
-      - name: orchestrator
-        url: http://orchestrator-service:8000/health
-        interval: 15s
-        timeout: 3s
-```
-
-### 8.2. Actualización de Agentes
+### 7.2. Rollback Procedure
 ```bash
 #!/bin/bash
-# update-agents.sh
+# rollback.sh
 
-# Actualizar imágenes
-docker-compose pull
+# Rollback to previous version
+kubectl rollout undo deployment/${SERVICE_NAME}
 
-# Actualizar deployments
-kubectl set image deployment/backend-agent \
-    backend-agent=smarthive/backend-agent:latest
-
-# Verificar rollout
-kubectl rollout status deployment/backend-agent
+# Verify rollback
+kubectl rollout status deployment/${SERVICE_NAME}

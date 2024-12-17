@@ -10,6 +10,8 @@ site_dir: site
 theme:
   name: material
   language: es
+  logo: assets/images/logo.png
+  favicon: assets/images/favicon.png
   font:
     text: Quicksand
     code: Ubuntu Mono
@@ -73,7 +75,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Architecture:
-      - General: architecture/system_architecture.md
+      - System Architecture: architecture/system_architecture.md
       - Agent Architecture: architecture/agent_architecture.md
       - Agent Ecosystem: architecture/agent_ecosystem.md
       - User Personalization: architecture/user_personalization.md
@@ -88,6 +90,9 @@ nav:
       - Agent Workflows: workflows/agent_workflows.md
       - CI/CD Pipeline: workflows/ci_cd_pipeline.md
       - Development Workflows: workflows/development_workflows.md
+  - ADRs:
+      - Overview: adr/README.md
+      - Framework Selection: adr/001-agent-framework-selection.md
   - Roadmap:
       - Features: roadmap/features.md
       - Milestones: roadmap/milestones.md
