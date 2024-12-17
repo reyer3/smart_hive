@@ -3,15 +3,18 @@ site_description: Documentación del ecosistema SmartHive basado en agentes inte
 site_author: Ricardo Reyes
 repo_url: https://github.com/reyer3/smart_hive
 repo_name: smart_hive
+site_url: https://reyer3.github.io/smart_hive/
 docs_dir: docs
 site_dir: site
 
 theme:
-  font:
-    text: Quicksand
-    code: Ubuntu
   name: material
   language: es
+  font:
+    text: Quicksand
+    code: Ubuntu Mono
+  icon:
+    repo: fontawesome/brands/github
   features:
     - navigation.instant
     - navigation.tracking
@@ -19,37 +22,50 @@ theme:
     - navigation.sections
     - navigation.expand
     - navigation.top
+    - navigation.footer
     - search.suggest
     - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: amber   # Color principal de Google
-      accent: yellow    # Color de acento de Google
+      primary: amber
+      accent: orange
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: amber  # Color principal para modo oscuro
-      accent: yellow   # Color de acento para modo oscuro
+      primary: amber
+      accent: orange
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
 
 plugins:
   - search
+  - tags
 
 markdown_extensions:
+  - tables
   - attr_list
+  - def_list
   - md_in_html
+  - toc:
+      permalink: true
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
   - admonition
   - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true 
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -84,4 +100,10 @@ extra:
       name: GitHub
   analytics:
     provider: google
-    property: !ENV GOOGLE_ANALYTICS_KEY
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
