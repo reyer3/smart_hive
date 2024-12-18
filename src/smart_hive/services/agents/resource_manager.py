@@ -8,15 +8,18 @@ from typing import Dict, Optional
 from llama_agents import AgentService
 from llama_index.llms.openai import OpenAI
 
+from smart_hive.configs.agent_configs import AGENT_CONFIGS
+
 class ResourceManager(AgentService):
     """
     Basic resource manager for agent lifecycle management.
     """
     
-    def __init__(self, name="resource_manager"):
+    def __init__(self):
+        config = AGENT_CONFIGS["resource_manager"]
         super().__init__(
-            description="Resource allocation and management service",
-            service_name=name,
+            description=config["description"],
+            service_name=config["name"],
             llm=OpenAI()
         )
         self.resource_allocations: Dict[str, Dict] = {}
@@ -26,9 +29,14 @@ class ResourceManager(AgentService):
         if agent_id in self.resource_allocations:
             return False
             
+        # Use default requirements from config if not specified
+        agent_type = agent_id.split("_")[0]
+        default_requirements = AGENT_CONFIGS.get(agent_type, {}).get("requirements", {})
+        final_requirements = {**default_requirements, **requirements}
+            
         self.resource_allocations[agent_id] = {
-            "cpu": requirements.get("cpu", 1),
-            "memory": requirements.get("memory", 512),
+            "cpu": final_requirements.get("cpu", 1),
+            "memory": final_requirements.get("memory", 512),
             "status": "allocated"
         }
         return True
