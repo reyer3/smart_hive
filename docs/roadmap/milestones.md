@@ -8,11 +8,19 @@
 - [ ] Basic swarm coordination
 - [ ] Initial testing framework
 
-### Milestone 2: Basic Agent Capabilities (February 2025)
-- [ ] Agent lifecycle management
-- [ ] Task distribution system
-- [ ] Memory management system
-- [ ] Basic learning capabilities
+### Milestone 2: Meta-Agent System (February 2025)
+- [ ] ADAS Archive Service
+  - Configuration storage
+  - Pattern recognition
+  - Performance tracking
+- [ ] Prompt Engineering Service
+  - Chain-of-Thought implementation
+  - RAG integration
+  - Self-reflection mechanisms
+- [ ] Agent Evaluation System
+  - Performance metrics
+  - Quality assessment
+  - Continuous improvement
 
 ### Milestone 3: Development Tools (March 2025)
 - [ ] Agent development SDK
