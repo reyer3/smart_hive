@@ -18,6 +18,7 @@ from llama_index.llms.openai import OpenAI
 
 from smart_hive.configs.agent_configs import AGENT_CONFIGS, AGENT_VALIDATION
 from smart_hive.services.agents.resource_manager import ResourceManager
+from smart_hive.services.control_plane.state_manager import StateManager
 
 class AgentRequest(BaseModel):
     """Request model for agent operations with validation."""
@@ -57,37 +58,60 @@ class AgentResponse(BaseModel):
 app = FastAPI(title="SmartHive Control Plane")
 message_queue = SimpleMessageQueue()
 resource_manager = ResourceManager()
+state_manager = StateManager()
 
 class SmartHiveOrchestrator(AgentOrchestrator):
-    """Custom orchestrator with enhanced error handling."""
+    """Custom orchestrator with enhanced error handling and state management."""
     
     def __init__(self):
         super().__init__(llm=OpenAI())
         self.resource_manager = resource_manager
+        self.state_manager = state_manager
         self._agents: Dict[str, Dict] = {}
+        self._initialize_from_state()
+
+    def _initialize_from_state(self):
+        """Initialize agents from saved state."""
+        saved_states = state_manager.list_states()
+        for agent_id, state in saved_states.items():
+            self._agents[agent_id] = state
 
     async def create_agent(self, name: str, agent_type: str, requirements: Optional[Dict] = None) -> str:
-        """Create a new agent with resource allocation."""
+        """Create a new agent with resource allocation and state persistence."""
         try:
             # Create base agent
             agent_id = f"{agent_type}_{name}"
             if agent_id in self._agents:
                 raise ValueError(f"Agent {agent_id} already exists")
 
+            # Check instance limits
+            agent_count = sum(1 for a in self._agents.values() if a["type"] == agent_type)
+            max_instances = AGENT_VALIDATION["max_instances"].get(
+                agent_type,
+                AGENT_VALIDATION["max_instances"]["default"]
+            )
+            if agent_count >= max_instances:
+                raise ValueError(f"Maximum number of {agent_type} instances ({max_instances}) reached")
+
             # Allocate resources
-            if not await self.resource_manager.allocate_resources(agent_id, requirements or {}):
+            if not await resource_manager.allocate_resources(agent_id, requirements or {}):
                 raise ValueError(f"Failed to allocate resources for agent {agent_id}")
 
             # Initialize agent
             agent = AgentService(
-                description=f"{agent_type} agent",
+                description=AGENT_CONFIGS[agent_type]["description"],
                 service_name=name
             )
-            self._agents[agent_id] = {
+            
+            # Save state
+            agent_state = {
                 "agent": agent,
                 "status": "running",
-                "type": agent_type
+                "type": agent_type,
+                "resources": await resource_manager.get_resource_status(agent_id)
             }
+            self._agents[agent_id] = agent_state
+            await state_manager.save_state(agent_id, agent_state)
             
             return agent_id
             
@@ -98,16 +122,32 @@ class SmartHiveOrchestrator(AgentOrchestrator):
             raise e
 
     async def destroy_agent(self, agent_id: str) -> bool:
-        """Destroy an agent and cleanup resources."""
+        """Destroy an agent with complete cleanup."""
         if agent_id not in self._agents:
             return False
 
-        # Cleanup resources
-        await self.resource_manager.deallocate_resources(agent_id)
-        
-        # Remove agent
-        del self._agents[agent_id]
-        return True
+        try:
+            # Get agent info for cleanup
+            agent_info = self._agents[agent_id]
+            
+            # Cleanup message queue
+            await message_queue.remove_subscriber(agent_id)
+            
+            # Cleanup resources
+            await resource_manager.deallocate_resources(agent_id)
+            
+            # Cleanup state
+            await state_manager.delete_state(agent_id)
+            
+            # Remove from memory
+            del self._agents[agent_id]
+            
+            return True
+            
+        except Exception as e:
+            # Log error but don't re-raise
+            print(f"Error during agent cleanup: {str(e)}")
+            return False
 
     async def get_agent(self, agent_id: str) -> Optional[Dict]:
         """Get agent details including resource status."""
@@ -115,7 +155,7 @@ class SmartHiveOrchestrator(AgentOrchestrator):
             return None
             
         agent_info = self._agents[agent_id].copy()
-        agent_info["resources"] = await self.resource_manager.get_resource_status(agent_id)
+        agent_info["resources"] = await resource_manager.get_resource_status(agent_id)
         return agent_info
 
     async def list_agents(self) -> List[Dict]:
@@ -123,7 +163,7 @@ class SmartHiveOrchestrator(AgentOrchestrator):
         agents = []
         for agent_id, info in self._agents.items():
             agent_info = info.copy()
-            agent_info["resources"] = await self.resource_manager.get_resource_status(agent_id)
+            agent_info["resources"] = await resource_manager.get_resource_status(agent_id)
             agents.append({"agent_id": agent_id, **agent_info})
         return agents
 
