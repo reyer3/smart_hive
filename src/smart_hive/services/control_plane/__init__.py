@@ -1,0 +1,1 @@
+"""SmartHive Control Plane Service"""
