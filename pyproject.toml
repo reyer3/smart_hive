@@ -33,11 +33,16 @@ run-tests = "smart_hive.scripts:run_tests"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-v --strict-markers --cov=smart_hive"
+addopts = "-v --strict-markers --cov=smart_hive -Werror"
 testpaths = ["tests"]
 python_files = ["test_*.py"]
 markers = [
     "asyncio: mark test as async/await",
     "integration: mark test as integration test",
     "unit: mark test as unit test"
+]
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning:pydantic.*",
+    "ignore::UserWarning:pydantic.*"
 ]

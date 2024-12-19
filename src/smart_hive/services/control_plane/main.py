@@ -8,7 +8,7 @@ import re
 from contextlib import asynccontextmanager
 from typing import Dict, List, Optional
 from fastapi import FastAPI, HTTPException, status
-from pydantic import BaseModel, ValidationError, validator
+from pydantic import BaseModel, ConfigDict, field_validator
 from llama_agents import (
     AgentService,
     ControlPlaneServer,
@@ -27,26 +27,31 @@ class AgentRequest(BaseModel):
     agent_type: str
     requirements: Optional[Dict] = None
 
-    @validator("name")
-    def validate_name(cls, v):
-        if not re.match(AGENT_VALIDATION["name_pattern"], v):
-            raise ValueError("Name must contain only letters, numbers, underscores, and hyphens")
-        return v
-
-    @validator("agent_type")
-    def validate_agent_type(cls, v):
-        if v not in AGENT_CONFIGS:
-            raise ValueError(f"Invalid agent type. Must be one of: {list(AGENT_CONFIGS.keys())}")
-        return v
-
-    class Config:
-        schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "name": "worker_1",
                 "agent_type": "backend",
                 "requirements": {"cpu": 1, "memory": 512}
             }
         }
+    )
+
+    @field_validator("name")
+    @classmethod
+    def validate_name(cls, v):
+        """Validate agent name."""
+        if not re.match(AGENT_VALIDATION["name_pattern"], v):
+            raise ValueError("Name must contain only letters, numbers, underscores, and hyphens")
+        return v
+
+    @field_validator("agent_type")
+    @classmethod
+    def validate_agent_type(cls, v):
+        """Validate agent type."""
+        if v not in AGENT_CONFIGS:
+            raise ValueError(f"Invalid agent type. Must be one of: {list(AGENT_CONFIGS.keys())}")
+        return v
 
 class AgentResponse(BaseModel):
     """Response model for agent operations."""
@@ -71,10 +76,18 @@ class SmartHiveOrchestrator(AgentOrchestrator):
 
     @classmethod
     async def create(cls):
-        """Factory method to create and initialize an instance."""
+        """Create a new orchestrator."""
         instance = cls()
-        await instance._initialize_from_state()
+        instance.resource_manager = ResourceManager()
+        instance.state_manager = StateManager()
+        instance._agents = {}
         return instance
+
+    async def reset(self):
+        """Reset orchestrator state."""
+        self._agents = {}
+        self.resource_manager.resource_allocations = {}
+        await self.state_manager.clear()
 
     async def _initialize_from_state(self):
         """Initialize agents from saved state."""
@@ -88,6 +101,7 @@ class SmartHiveOrchestrator(AgentOrchestrator):
 
     async def create_agent(self, name: str, agent_type: str, requirements: Optional[Dict] = None) -> str:
         """Create a new agent with resource allocation and state persistence."""
+        agent_id = None
         try:
             # Create base agent
             agent_id = f"{agent_type}_{name}"
@@ -103,8 +117,12 @@ class SmartHiveOrchestrator(AgentOrchestrator):
             if agent_count >= max_instances:
                 raise ValueError(f"Maximum number of {agent_type} instances ({max_instances}) reached")
 
+            # Use default requirements if none provided
+            if requirements is None:
+                requirements = AGENT_CONFIGS[agent_type]["requirements"]
+
             # Allocate resources
-            if not await self.resource_manager.allocate_resources(agent_id, requirements or {}):
+            if not await self.resource_manager.allocate_resources(agent_id, requirements):
                 raise ValueError(f"Failed to allocate resources for agent {agent_id}")
 
             # Initialize agent
@@ -127,7 +145,7 @@ class SmartHiveOrchestrator(AgentOrchestrator):
             
         except Exception as e:
             # Cleanup on failure
-            if agent_id in self._agents:
+            if agent_id and agent_id in self._agents:
                 await self.destroy_agent(agent_id)
             raise e
 
@@ -181,10 +199,25 @@ class SmartHiveOrchestrator(AgentOrchestrator):
 orchestrator = None
 control_plane = None
 
+def set_orchestrator(instance):
+    """Set the global orchestrator instance."""
+    global orchestrator
+    orchestrator = instance
+
 async def initialize_components():
-    """Initialize orchestrator and control plane components."""
+    """Initialize all components."""
     global orchestrator, control_plane
-    orchestrator = await SmartHiveOrchestrator.create()
+    if orchestrator is None:
+        orchestrator = await SmartHiveOrchestrator.create()
+        # Reset state
+        orchestrator.resource_manager.resource_allocations = {}
+        orchestrator._agents = {}
+        await orchestrator.state_manager.clear()
+        # Initialize resource manager
+        await orchestrator.resource_manager.allocate_resources(
+            "resource_manager",
+            AGENT_CONFIGS["resource_manager"]["requirements"]
+        )
     control_plane = ControlPlaneServer(
         message_queue=message_queue,
         agent_orchestrator=orchestrator
@@ -210,15 +243,16 @@ async def create_agent(request: AgentRequest):
             agent_type=request.agent_type,
             requirements=request.requirements
         )
+        agent_info = await orchestrator.get_agent(agent_id)
         return AgentResponse(
             agent_id=agent_id,
             status="created",
-            resources=await orchestrator.resource_manager.get_resource_status(agent_id)
+            resources=agent_info["resources"]
         )
-    except ValueError as e:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
     except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        # Log the error for debugging
+        print(f"Error creating agent: {str(e)}")
+        raise HTTPException(status_code=400, detail=str(e))
 
 @app.delete("/agents/{agent_id}", response_model=AgentResponse)
 async def destroy_agent(agent_id: str):
@@ -239,4 +273,11 @@ async def get_agent(agent_id: str):
 async def list_agents():
     """List all agents."""
     agents = await orchestrator.list_agents()
-    return [AgentResponse(agent_id=agent["agent_id"], **agent) for agent in agents]
+    return [
+        AgentResponse(
+            agent_id=agent["agent_id"],
+            status=agent["status"],
+            resources=agent["resources"]
+        )
+        for agent in agents
+    ]
