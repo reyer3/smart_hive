@@ -10,10 +10,19 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.12"
 pytest = "^8.3.4"
+pytest-asyncio = "^0.23.5"
+pytest-cov = "^4.1.0"
+fastapi = "^0.109.0"
+httpx = "^0.26.0"
 swarm = {git = "https://github.com/openai/swarm.git"}
 mkdocs = "^1.6.1"
 mkdocs-material = "^9.5.48"
 mkdocs-minify-plugin = "^0.7.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.1.0"
+isort = "^5.13.0"
+flake8 = "^7.0.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -22,7 +31,13 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.scripts]
 run-tests = "smart_hive.scripts:run_tests"
 
-
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "--strict-markers"
+addopts = "-v --strict-markers --cov=smart_hive"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+markers = [
+    "asyncio: mark test as async/await",
+    "integration: mark test as integration test",
+    "unit: mark test as unit test"
+]
