@@ -41,8 +41,32 @@ plugins:
 
 nav:
   - Inicio: index.md
-  - Guías:
-      - Testing:
-          - Testing LLM: testing/llm_testing.md
+  - Arquitectura:
+      - Sistema: architecture/system_architecture.md
+      - Agentes:
+          - Arquitectura: architecture/agent_architecture.md
+          - Comunicación: architecture/agent_communication.md
+          - Ecosistema: architecture/agent_ecosystem.md
+      - Modelo de Datos: architecture/data_model.md
+      - Personalización: architecture/user_personalization.md
+  - Desarrollo:
+      - Backend: development/backend_development.md
+      - Frontend: development/frontend_development.md
+      - Agentes: development/agent_development.md
+      - Testing: development/testing.md
+      - Despliegue: development/deployment.md
+  - Flujos de Trabajo:
+      - Agentes:
+          - Colaboración: workflows/agent_collaboration.md
+          - Flujos: workflows/agent_workflows.md
+      - CI/CD: workflows/ci_cd_pipeline.md
+      - Desarrollo: workflows/development_workflows.md
+  - Testing:
+      - LLM Testing: testing/llm_testing.md
+  - ADRs:
+      - Overview: adr/README.md
+      - Framework Selection: adr/001-agent-framework-selection.md
   - Roadmap:
+      - Features: roadmap/features.md
       - Milestones: roadmap/milestones.md
+      - Backlog: roadmap/backlog.md
