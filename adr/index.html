@@ -12,28 +12,28 @@
         <meta name="author" content="Ricardo Reyes">
       
       
-        <link rel="canonical" href="https://reyer3.github.io/smart_hive/architecture/agent_ecosystem/">
+        <link rel="canonical" href="https://reyer3.github.io/smart_hive/adr/">
       
       
-        <link rel="prev" href="../agent_architecture/">
+        <link rel="prev" href="../workflows/development_workflows/">
       
       
-        <link rel="next" href="../user_personalization/">
+        <link rel="next" href="001-agent-framework-selection/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
-        <title>Agent Ecosystem - SmartHive Documentation</title>
+        <title>Overview - SmartHive Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,7 +52,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#agent-ecosystem" class="md-skip">
+        <a href="#architecture-decision-records-adrs" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -102,9 +102,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="../.." title="SmartHive Documentation" class="md-header__button md-logo" aria-label="SmartHive Documentation" data-md-component="logo">
+    <a href=".." title="SmartHive Documentation" class="md-header__button md-logo" aria-label="SmartHive Documentation" data-md-component="logo">
       
-  <img src="../../assets/images/logo.png" alt="logo">
+  <img src="../assets/images/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Agent Ecosystem
+              Overview
             
           </span>
         </div>
@@ -230,7 +230,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
     
@@ -245,13 +245,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../system_architecture/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../architecture/system_architecture/" class="md-tabs__link">
           
   
   Architecture
@@ -269,7 +267,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../development/backend_development/" class="md-tabs__link">
+        <a href="../development/backend_development/" class="md-tabs__link">
           
   
   Development
@@ -287,7 +285,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../workflows/agent_workflows/" class="md-tabs__link">
+        <a href="../workflows/agent_workflows/" class="md-tabs__link">
           
   
   Workflows
@@ -301,11 +299,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../adr/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   ADRs
@@ -323,7 +323,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../roadmap/features/" class="md-tabs__link">
+        <a href="../roadmap/features/" class="md-tabs__link">
           
   
   Roadmap
@@ -356,9 +356,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="SmartHive Documentation" class="md-nav__button md-logo" aria-label="SmartHive Documentation" data-md-component="logo">
+    <a href=".." title="SmartHive Documentation" class="md-nav__button md-logo" aria-label="SmartHive Documentation" data-md-component="logo">
       
-  <img src="../../assets/images/logo.png" alt="logo">
+  <img src="../assets/images/logo.png" alt="logo">
 
     </a>
     SmartHive Documentation
@@ -385,7 +385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -402,30 +402,27 @@
       
   
   
-    
   
   
-  
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -436,7 +433,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Architecture
@@ -450,7 +447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system_architecture/" class="md-nav__link">
+      <a href="../architecture/system_architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -471,7 +468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../agent_architecture/" class="md-nav__link">
+      <a href="../architecture/agent_architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -489,30 +486,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Agent Ecosystem
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../architecture/agent_ecosystem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -521,161 +498,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#core-agents" class="md-nav__link">
-    <span class="md-ellipsis">
-      Core Agents
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Core Agents">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#orchestratoragent" class="md-nav__link">
-    <span class="md-ellipsis">
-      OrchestratorAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#backendagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      BackendAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frontendagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      FrontendAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#qaagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      QAAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#devopsagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      DevOpsAgent
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#agent-interaction-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Agent Interaction Model
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Agent Interaction Model">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#communication-protocol" class="md-nav__link">
-    <span class="md-ellipsis">
-      Communication Protocol
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#knowledge-sharing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Knowledge Sharing
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#personalization-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      Personalization System
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Personalization System">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#learning-mechanisms" class="md-nav__link">
-    <span class="md-ellipsis">
-      Learning Mechanisms
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adaptation-strategies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adaptation Strategies
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#future-expansion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Future Expansion
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -688,7 +510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../user_personalization/" class="md-nav__link">
+      <a href="../architecture/user_personalization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -709,7 +531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data_model/" class="md-nav__link">
+      <a href="../architecture/data_model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -779,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/backend_development/" class="md-nav__link">
+      <a href="../development/backend_development/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -800,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/frontend_development/" class="md-nav__link">
+      <a href="../development/frontend_development/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -821,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/agent_development/" class="md-nav__link">
+      <a href="../development/agent_development/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -842,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/deployment/" class="md-nav__link">
+      <a href="../development/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -863,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/testing/" class="md-nav__link">
+      <a href="../development/testing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -933,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workflows/agent_workflows/" class="md-nav__link">
+      <a href="../workflows/agent_workflows/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -954,7 +776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workflows/ci_cd_pipeline/" class="md-nav__link">
+      <a href="../workflows/ci_cd_pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -975,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workflows/development_workflows/" class="md-nav__link">
+      <a href="../workflows/development_workflows/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1000,27 +822,30 @@
       
   
   
+    
   
   
+  
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1031,7 +856,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             ADRs
@@ -1042,10 +867,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../adr/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1054,6 +899,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indice-de-adrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Índice de ADRs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estados-posibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estados Posibles
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1066,7 +949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../adr/001-agent-framework-selection/" class="md-nav__link">
+      <a href="001-agent-framework-selection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1136,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../roadmap/features/" class="md-nav__link">
+      <a href="../roadmap/features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1157,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../roadmap/milestones/" class="md-nav__link">
+      <a href="../roadmap/milestones/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1178,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../roadmap/backlog/" class="md-nav__link">
+      <a href="../roadmap/backlog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1226,135 +1109,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-agents" class="md-nav__link">
+  <a href="#indice-de-adrs" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Agents
+      Índice de ADRs
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Core Agents">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#orchestratoragent" class="md-nav__link">
-    <span class="md-ellipsis">
-      OrchestratorAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#backendagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      BackendAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frontendagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      FrontendAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#qaagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      QAAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#devopsagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      DevOpsAgent
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#agent-interaction-model" class="md-nav__link">
+  <a href="#estados-posibles" class="md-nav__link">
     <span class="md-ellipsis">
-      Agent Interaction Model
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Agent Interaction Model">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#communication-protocol" class="md-nav__link">
-    <span class="md-ellipsis">
-      Communication Protocol
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#knowledge-sharing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Knowledge Sharing
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#personalization-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      Personalization System
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Personalization System">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#learning-mechanisms" class="md-nav__link">
-    <span class="md-ellipsis">
-      Learning Mechanisms
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adaptation-strategies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adaptation Strategies
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#future-expansion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Future Expansion
+      Estados Posibles
     </span>
   </a>
   
@@ -1378,89 +1144,35 @@
   
 
 
-<h1 id="agent-ecosystem">Agent Ecosystem<a class="headerlink" href="#agent-ecosystem" title="Permanent link">&para;</a></h1>
-<p>SmartHive's agent ecosystem is designed to emulate a complete development team through specialized AI agents that work together to build and maintain software projects. Each agent is an expert in its domain and can learn from user interactions to provide increasingly personalized assistance.</p>
-<h2 id="core-agents">Core Agents<a class="headerlink" href="#core-agents" title="Permanent link">&para;</a></h2>
-<h3 id="orchestratoragent">OrchestratorAgent<a class="headerlink" href="#orchestratoragent" title="Permanent link">&para;</a></h3>
+<h1 id="architecture-decision-records-adrs">Architecture Decision Records (ADRs)<a class="headerlink" href="#architecture-decision-records-adrs" title="Permanent link">&para;</a></h1>
+<p>Este directorio contiene los registros de decisiones arquitectónicas para el proyecto SmartHive.</p>
+<h2 id="indice-de-adrs">Índice de ADRs<a class="headerlink" href="#indice-de-adrs" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Número</th>
+<th>Título</th>
+<th>Estado</th>
+<th>Fecha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="001-agent-framework-selection/">ADR-001</a></td>
+<td>Selección del Framework de Agentes</td>
+<td>Propuesto</td>
+<td>2024-12-17</td>
+</tr>
+</tbody>
+</table>
+<h2 id="estados-posibles">Estados Posibles<a class="headerlink" href="#estados-posibles" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Role</strong>: Coordinates all other agents and manages workflow</li>
-<li><strong>Responsibilities</strong>:</li>
-<li>Task distribution and prioritization</li>
-<li>Managing agent communication</li>
-<li>Ensuring consistency across agent outputs</li>
-<li>Monitoring system performance</li>
+<li><strong>Propuesto</strong>: La decisión está siendo considerada</li>
+<li><strong>Aceptado</strong>: La decisión ha sido aceptada y está siendo implementada</li>
+<li><strong>Rechazado</strong>: La decisión fue considerada pero no aceptada</li>
+<li><strong>Obsoleto</strong>: La decisión fue aceptada pero ya no es válida</li>
+<li><strong>Reemplazado</strong>: La decisión fue reemplazada por otra decisión (referenciada)</li>
 </ul>
-<h3 id="backendagent">BackendAgent<a class="headerlink" href="#backendagent" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Role</strong>: Backend development and API design</li>
-<li><strong>Specializations</strong>:</li>
-<li>Database schema design</li>
-<li>API endpoint creation</li>
-<li>Business logic implementation</li>
-<li>Performance optimization</li>
-</ul>
-<h3 id="frontendagent">FrontendAgent<a class="headerlink" href="#frontendagent" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Role</strong>: Frontend development and UI/UX</li>
-<li><strong>Specializations</strong>:</li>
-<li>Component development</li>
-<li>State management</li>
-<li>Responsive design</li>
-<li>Accessibility implementation</li>
-</ul>
-<h3 id="qaagent">QAAgent<a class="headerlink" href="#qaagent" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Role</strong>: Quality assurance and testing</li>
-<li><strong>Specializations</strong>:</li>
-<li>Test case generation</li>
-<li>Automated testing</li>
-<li>Performance testing</li>
-<li>Bug detection and reporting</li>
-</ul>
-<h3 id="devopsagent">DevOpsAgent<a class="headerlink" href="#devopsagent" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Role</strong>: Infrastructure and deployment</li>
-<li><strong>Specializations</strong>:</li>
-<li>CI/CD pipeline management</li>
-<li>Infrastructure as code</li>
-<li>Monitoring and logging</li>
-<li>Security implementation</li>
-</ul>
-<h2 id="agent-interaction-model">Agent Interaction Model<a class="headerlink" href="#agent-interaction-model" title="Permanent link">&para;</a></h2>
-<h3 id="communication-protocol">Communication Protocol<a class="headerlink" href="#communication-protocol" title="Permanent link">&para;</a></h3>
-<p>Agents communicate through a standardized protocol that includes:
-- Task requests and responses
-- Status updates
-- Resource sharing
-- Error handling</p>
-<h3 id="knowledge-sharing">Knowledge Sharing<a class="headerlink" href="#knowledge-sharing" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Shared context maintenance</li>
-<li>Cross-agent learning</li>
-<li>Best practices propagation</li>
-<li>User preference synchronization</li>
-</ul>
-<h2 id="personalization-system">Personalization System<a class="headerlink" href="#personalization-system" title="Permanent link">&para;</a></h2>
-<h3 id="learning-mechanisms">Learning Mechanisms<a class="headerlink" href="#learning-mechanisms" title="Permanent link">&para;</a></h3>
-<ul>
-<li>User interaction analysis</li>
-<li>Code style preferences</li>
-<li>Tool and framework preferences</li>
-<li>Development workflow patterns</li>
-</ul>
-<h3 id="adaptation-strategies">Adaptation Strategies<a class="headerlink" href="#adaptation-strategies" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Dynamic prompt adjustment</li>
-<li>Context-aware responses</li>
-<li>Workflow optimization</li>
-<li>Resource prioritization</li>
-</ul>
-<h2 id="future-expansion">Future Expansion<a class="headerlink" href="#future-expansion" title="Permanent link">&para;</a></h2>
-<p>The ecosystem is designed to be extensible, allowing for:
-- New specialized agents
-- Enhanced learning capabilities
-- Integration with external tools
-- Custom agent development</p>
 
 
 
@@ -1500,7 +1212,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Pie" >
         
           
-          <a href="../agent_architecture/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Agent Architecture">
+          <a href="../workflows/development_workflows/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Development Workflows">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1510,20 +1222,20 @@
                 Anterior
               </span>
               <div class="md-ellipsis">
-                Agent Architecture
+                Development Workflows
               </div>
             </div>
           </a>
         
         
           
-          <a href="../user_personalization/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: User Personalization">
+          <a href="001-agent-framework-selection/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Framework Selection">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Siguiente
               </span>
               <div class="md-ellipsis">
-                User Personalization
+                Framework Selection
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1643,10 +1355,10 @@
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
     
   </body>

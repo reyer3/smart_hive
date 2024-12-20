@@ -104,8 +104,7 @@
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
     <a href="../.." title="SmartHive Documentation" class="md-header__button md-logo" aria-label="SmartHive Documentation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../assets/images/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -306,6 +305,24 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../adr/" class="md-tabs__link">
+          
+  
+  ADRs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../roadmap/features/" class="md-tabs__link">
           
   
@@ -341,8 +358,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="SmartHive Documentation" class="md-nav__button md-logo" aria-label="SmartHive Documentation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../assets/images/logo.png" alt="logo">
 
     </a>
     SmartHive Documentation
@@ -438,7 +454,7 @@
         
   
   <span class="md-ellipsis">
-    General
+    System Architecture
   </span>
   
 
@@ -501,13 +517,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-fundamentos-de-swarm" class="md-nav__link">
+  <a href="#1-fundamentos-de-llama-agents" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Fundamentos de Swarm
+      1. Fundamentos de llama-agents
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Fundamentos de Swarm">
+    <nav class="md-nav" aria-label="1. Fundamentos de llama-agents">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -520,9 +536,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-transferencias-handoffs" class="md-nav__link">
+  <a href="#12-control-plane-y-orquestacion" class="md-nav__link">
     <span class="md-ellipsis">
-      1.2. Transferencias (Handoffs)
+      1.2. Control Plane y Orquestación
     </span>
   </a>
   
@@ -553,9 +569,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-sistema-de-aprendizaje" class="md-nav__link">
+  <a href="#22-sistema-de-monitoreo" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2. Sistema de Aprendizaje
+      2.2. Sistema de Monitoreo
     </span>
   </a>
   
@@ -567,28 +583,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-jerarquia-de-agentes" class="md-nav__link">
+  <a href="#3-arquitectura-de-microservicios" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Jerarquía de Agentes
+      3. Arquitectura de Microservicios
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Jerarquía de Agentes">
+    <nav class="md-nav" aria-label="3. Arquitectura de Microservicios">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-orchestratoragent" class="md-nav__link">
+  <a href="#31-servicios-base" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1. OrchestratorAgent
+      3.1. Servicios Base
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-specializedagent" class="md-nav__link">
+  <a href="#32-servicios-especializados" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2. SpecializedAgent
+      3.2. Servicios Especializados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-comunicacion-entre-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Comunicación entre Servicios
     </span>
   </a>
   
@@ -600,28 +625,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-mecanismos-de-control" class="md-nav__link">
+  <a href="#4-monitoreo-y-observabilidad" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Mecanismos de Control
+      4. Monitoreo y Observabilidad
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Mecanismos de Control">
+    <nav class="md-nav" aria-label="4. Monitoreo y Observabilidad">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-control-de-flujo" class="md-nav__link">
+  <a href="#41-herramientas-de-monitoreo" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1. Control de Flujo
+      4.1. Herramientas de Monitoreo
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-monitoreo" class="md-nav__link">
+  <a href="#42-metricas-clave" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2. Monitoreo
+      4.2. Métricas Clave
     </span>
   </a>
   
@@ -633,136 +658,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-interfaces-de-comunicacion" class="md-nav__link">
+  <a href="#5-escalabilidad" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Interfaces de Comunicación
+      5. Escalabilidad
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Interfaces de Comunicación">
+    <nav class="md-nav" aria-label="5. Escalabilidad">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-api-interna" class="md-nav__link">
+  <a href="#51-estrategias-de-escalado" class="md-nav__link">
     <span class="md-ellipsis">
-      5.1. API Interna
+      5.1. Estrategias de Escalado
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#52-api-externa" class="md-nav__link">
+  <a href="#52-gestion-de-recursos" class="md-nav__link">
     <span class="md-ellipsis">
-      5.2. API Externa
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-ciclo-de-vida-del-agente" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Ciclo de Vida del Agente
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Ciclo de Vida del Agente">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#61-inicializacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.1. Inicialización
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#62-operacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.2. Operación
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#63-mantenimiento" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.3. Mantenimiento
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-seguridad-y-control-de-acceso" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Seguridad y Control de Acceso
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Seguridad y Control de Acceso">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-autenticacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.1. Autenticación
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-autorizacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.2. Autorización
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-extensibilidad" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Extensibilidad
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Extensibilidad">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#81-plugins" class="md-nav__link">
-    <span class="md-ellipsis">
-      8.1. Plugins
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#82-personalizacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      8.2. Personalización
+      5.2. Gestión de Recursos
     </span>
   </a>
   
@@ -1146,7 +1063,7 @@
             
   
   <span class="md-ellipsis">
-    Roadmap
+    ADRs
   </span>
   
 
@@ -1155,6 +1072,97 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            ADRs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/001-agent-framework-selection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Framework Selection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Roadmap
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Roadmap
           </label>
@@ -1257,13 +1265,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-fundamentos-de-swarm" class="md-nav__link">
+  <a href="#1-fundamentos-de-llama-agents" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Fundamentos de Swarm
+      1. Fundamentos de llama-agents
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Fundamentos de Swarm">
+    <nav class="md-nav" aria-label="1. Fundamentos de llama-agents">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1276,9 +1284,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-transferencias-handoffs" class="md-nav__link">
+  <a href="#12-control-plane-y-orquestacion" class="md-nav__link">
     <span class="md-ellipsis">
-      1.2. Transferencias (Handoffs)
+      1.2. Control Plane y Orquestación
     </span>
   </a>
   
@@ -1309,9 +1317,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-sistema-de-aprendizaje" class="md-nav__link">
+  <a href="#22-sistema-de-monitoreo" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2. Sistema de Aprendizaje
+      2.2. Sistema de Monitoreo
     </span>
   </a>
   
@@ -1323,28 +1331,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-jerarquia-de-agentes" class="md-nav__link">
+  <a href="#3-arquitectura-de-microservicios" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Jerarquía de Agentes
+      3. Arquitectura de Microservicios
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Jerarquía de Agentes">
+    <nav class="md-nav" aria-label="3. Arquitectura de Microservicios">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-orchestratoragent" class="md-nav__link">
+  <a href="#31-servicios-base" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1. OrchestratorAgent
+      3.1. Servicios Base
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-specializedagent" class="md-nav__link">
+  <a href="#32-servicios-especializados" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2. SpecializedAgent
+      3.2. Servicios Especializados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-comunicacion-entre-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Comunicación entre Servicios
     </span>
   </a>
   
@@ -1356,28 +1373,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-mecanismos-de-control" class="md-nav__link">
+  <a href="#4-monitoreo-y-observabilidad" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Mecanismos de Control
+      4. Monitoreo y Observabilidad
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Mecanismos de Control">
+    <nav class="md-nav" aria-label="4. Monitoreo y Observabilidad">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-control-de-flujo" class="md-nav__link">
+  <a href="#41-herramientas-de-monitoreo" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1. Control de Flujo
+      4.1. Herramientas de Monitoreo
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-monitoreo" class="md-nav__link">
+  <a href="#42-metricas-clave" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2. Monitoreo
+      4.2. Métricas Clave
     </span>
   </a>
   
@@ -1389,136 +1406,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-interfaces-de-comunicacion" class="md-nav__link">
+  <a href="#5-escalabilidad" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Interfaces de Comunicación
+      5. Escalabilidad
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Interfaces de Comunicación">
+    <nav class="md-nav" aria-label="5. Escalabilidad">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-api-interna" class="md-nav__link">
+  <a href="#51-estrategias-de-escalado" class="md-nav__link">
     <span class="md-ellipsis">
-      5.1. API Interna
+      5.1. Estrategias de Escalado
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#52-api-externa" class="md-nav__link">
+  <a href="#52-gestion-de-recursos" class="md-nav__link">
     <span class="md-ellipsis">
-      5.2. API Externa
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-ciclo-de-vida-del-agente" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Ciclo de Vida del Agente
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Ciclo de Vida del Agente">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#61-inicializacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.1. Inicialización
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#62-operacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.2. Operación
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#63-mantenimiento" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.3. Mantenimiento
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-seguridad-y-control-de-acceso" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Seguridad y Control de Acceso
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Seguridad y Control de Acceso">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-autenticacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.1. Autenticación
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-autorizacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.2. Autorización
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-extensibilidad" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Extensibilidad
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Extensibilidad">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#81-plugins" class="md-nav__link">
-    <span class="md-ellipsis">
-      8.1. Plugins
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#82-personalizacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      8.2. Personalización
+      5.2. Gestión de Recursos
     </span>
   </a>
   
@@ -1548,145 +1457,96 @@
 
 
 <h1 id="arquitectura-de-agentes">Arquitectura de Agentes<a class="headerlink" href="#arquitectura-de-agentes" title="Permanent link">&para;</a></h1>
-<h2 id="1-fundamentos-de-swarm">1. Fundamentos de Swarm<a class="headerlink" href="#1-fundamentos-de-swarm" title="Permanent link">&para;</a></h2>
-<p>La arquitectura de agentes de SmartHive se basa en el framework Swarm, que proporciona una base sólida para sistemas multiagente con las siguientes características clave:</p>
+<h2 id="1-fundamentos-de-llama-agents">1. Fundamentos de llama-agents<a class="headerlink" href="#1-fundamentos-de-llama-agents" title="Permanent link">&para;</a></h2>
+<p>La arquitectura de agentes de SmartHive se basa en el framework llama-agents, que proporciona una arquitectura orientada a servicios para sistemas multiagente con las siguientes características clave:</p>
 <h3 id="11-componentes-fundamentales">1.1. Componentes Fundamentales<a class="headerlink" href="#11-componentes-fundamentales" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span> <span class="nc">Agent</span><span class="p">:</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">instructions</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Conjunto de instrucciones del agente</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="p">[]</span>        <span class="c1"># Herramientas disponibles</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="n">Memory</span><span class="p">()</span> <span class="c1"># Estado y contexto</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="n">Task</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Result</span><span class="p">:</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="n">context</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">get_context</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="k">for</span> <span class="n">instruction</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">instructions</span><span class="p">:</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="k">if</span> <span class="n">instruction</span><span class="o">.</span><span class="n">applies_to</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                <span class="k">return</span> <span class="k">await</span> <span class="n">instruction</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tools</span><span class="p">)</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">handoff</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>  <span class="c1"># Transferir si no puede manejar</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">llama_agents</span> <span class="kn">import</span> <span class="n">AgentService</span><span class="p">,</span> <span class="n">ControlPlaneServer</span><span class="p">,</span> <span class="n">SimpleMessageQueue</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">class</span> <span class="nc">SmartHiveAgent</span><span class="p">:</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">message_queue</span> <span class="o">=</span> <span class="n">SimpleMessageQueue</span><span class="p">()</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">agent_service</span> <span class="o">=</span> <span class="n">AgentService</span><span class="p">(</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            <span class="n">agent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">create_base_agent</span><span class="p">(),</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="n">message_queue</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">message_queue</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Agente base de SmartHive&quot;</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="n">service_name</span><span class="o">=</span><span class="s2">&quot;smart_hive_agent&quot;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent_service</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
 </span></code></pre></div>
-<h3 id="12-transferencias-handoffs">1.2. Transferencias (Handoffs)<a class="headerlink" href="#12-transferencias-handoffs" title="Permanent link">&para;</a></h3>
+<h3 id="12-control-plane-y-orquestacion">1.2. Control Plane y Orquestación<a class="headerlink" href="#12-control-plane-y-orquestacion" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Mecanismo principal para la colaboración entre agentes</li>
-<li>Permite la especialización y división de tareas</li>
-<li>Mantiene el contexto a través de transferencias</li>
+<li>Control plane centralizado para gestión de agentes</li>
+<li>Orquestación basada en LLM para enrutamiento de tareas</li>
+<li>Comunicación estandarizada vía API</li>
 </ul>
 <h2 id="2-extensiones-smarthive">2. Extensiones SmartHive<a class="headerlink" href="#2-extensiones-smarthive" title="Permanent link">&para;</a></h2>
-<p>Extendemos el framework Swarm con capacidades adicionales:</p>
+<p>Extendemos llama-agents con capacidades adicionales:</p>
 <h3 id="21-sistema-de-memoria">2.1. Sistema de Memoria<a class="headerlink" href="#21-sistema-de-memoria" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">class</span> <span class="nc">Memory</span><span class="p">:</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">short_term</span> <span class="o">=</span> <span class="n">Cache</span><span class="p">()</span>    <span class="c1"># Contexto inmediato</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">long_term</span> <span class="o">=</span> <span class="n">Database</span><span class="p">()</span>  <span class="c1"># Aprendizaje persistente</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">shared</span> <span class="o">=</span> <span class="n">SharedState</span><span class="p">()</span>  <span class="c1"># Estado compartido entre agentes</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">llama_index.core</span> <span class="kn">import</span> <span class="n">StorageContext</span><span class="p">,</span> <span class="n">VectorStoreIndex</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">class</span> <span class="nc">SmartHiveMemory</span><span class="p">:</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">short_term</span> <span class="o">=</span> <span class="n">VectorStoreIndex</span><span class="p">()</span>  <span class="c1"># Contexto inmediato</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">long_term</span> <span class="o">=</span> <span class="n">StorageContext</span><span class="p">()</span>     <span class="c1"># Almacenamiento persistente</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">shared</span> <span class="o">=</span> <span class="n">SimpleMessageQueue</span><span class="p">()</span>    <span class="c1"># Estado compartido</span>
 </span></code></pre></div>
-<h3 id="22-sistema-de-aprendizaje">2.2. Sistema de Aprendizaje<a class="headerlink" href="#22-sistema-de-aprendizaje" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span> <span class="nc">Learning</span><span class="p">:</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span> <span class="o">=</span> <span class="n">UserPreferences</span><span class="p">()</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">patterns</span> <span class="o">=</span> <span class="n">PatternRecognition</span><span class="p">()</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">feedback</span> <span class="o">=</span> <span class="n">FeedbackLoop</span><span class="p">()</span>
+<h3 id="22-sistema-de-monitoreo">2.2. Sistema de Monitoreo<a class="headerlink" href="#22-sistema-de-monitoreo" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">llama_agents.monitor</span> <span class="kn">import</span> <span class="n">AgentMonitor</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">class</span> <span class="nc">SmartHiveMonitor</span><span class="p">:</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">monitor</span> <span class="o">=</span> <span class="n">AgentMonitor</span><span class="p">()</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span> <span class="o">=</span> <span class="n">MetricsCollector</span><span class="p">()</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">alerts</span> <span class="o">=</span> <span class="n">AlertSystem</span><span class="p">()</span>
 </span></code></pre></div>
-<h2 id="3-jerarquia-de-agentes">3. Jerarquía de Agentes<a class="headerlink" href="#3-jerarquia-de-agentes" title="Permanent link">&para;</a></h2>
-<h3 id="31-orchestratoragent">3.1. OrchestratorAgent<a class="headerlink" href="#31-orchestratoragent" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span> <span class="nc">OrchestratorAgent</span><span class="p">(</span><span class="n">Agent</span><span class="p">):</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">task_queue</span> <span class="o">=</span> <span class="n">PriorityQueue</span><span class="p">()</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">agent_registry</span> <span class="o">=</span> <span class="n">AgentRegistry</span><span class="p">()</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">delegate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="n">Task</span><span class="p">):</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="n">agent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent_registry</span><span class="o">.</span><span class="n">find_best_agent</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">handoff</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">agent</span><span class="p">)</span>
-</span></code></pre></div>
-<h3 id="32-specializedagent">3.2. SpecializedAgent<a class="headerlink" href="#32-specializedagent" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span> <span class="nc">SpecializedAgent</span><span class="p">(</span><span class="n">Agent</span><span class="p">):</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">domain</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">capabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_capabilities</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
-</span></code></pre></div>
-<h2 id="4-mecanismos-de-control">4. Mecanismos de Control<a class="headerlink" href="#4-mecanismos-de-control" title="Permanent link">&para;</a></h2>
-<h3 id="41-control-de-flujo">4.1. Control de Flujo<a class="headerlink" href="#41-control-de-flujo" title="Permanent link">&para;</a></h3>
+<h2 id="3-arquitectura-de-microservicios">3. Arquitectura de Microservicios<a class="headerlink" href="#3-arquitectura-de-microservicios" title="Permanent link">&para;</a></h2>
+<h3 id="31-servicios-base">3.1. Servicios Base<a class="headerlink" href="#31-servicios-base" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Priorización de tareas</li>
+<li>ResourceManagerService: Gestión de recursos computacionales</li>
+<li>TaskCoordinatorService: Coordinación de tareas</li>
+<li>ErrorHandlerService: Manejo de errores y recuperación</li>
+</ul>
+<h3 id="32-servicios-especializados">3.2. Servicios Especializados<a class="headerlink" href="#32-servicios-especializados" title="Permanent link">&para;</a></h3>
+<ul>
+<li>BackendService: Desarrollo backend</li>
+<li>FrontendService: Desarrollo frontend</li>
+<li>QAService: Testing y calidad</li>
+<li>DevOpsService: Operaciones y despliegue</li>
+</ul>
+<h3 id="33-comunicacion-entre-servicios">3.3. Comunicación entre Servicios<a class="headerlink" href="#33-comunicacion-entre-servicios" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Message Queue centralizada</li>
+<li>API REST para comunicación entre servicios</li>
+<li>Eventos y webhooks para notificaciones</li>
+</ul>
+<h2 id="4-monitoreo-y-observabilidad">4. Monitoreo y Observabilidad<a class="headerlink" href="#4-monitoreo-y-observabilidad" title="Permanent link">&para;</a></h2>
+<h3 id="41-herramientas-de-monitoreo">4.1. Herramientas de Monitoreo<a class="headerlink" href="#41-herramientas-de-monitoreo" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Monitor CLI integrado</li>
+<li>Dashboard de métricas</li>
+<li>Sistema de alertas</li>
+</ul>
+<h3 id="42-metricas-clave">4.2. Métricas Clave<a class="headerlink" href="#42-metricas-clave" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Latencia de procesamiento</li>
+<li>Uso de recursos</li>
+<li>Tasa de éxito/error</li>
+<li>Transferencias entre agentes</li>
+</ul>
+<h2 id="5-escalabilidad">5. Escalabilidad<a class="headerlink" href="#5-escalabilidad" title="Permanent link">&para;</a></h2>
+<h3 id="51-estrategias-de-escalado">5.1. Estrategias de Escalado<a class="headerlink" href="#51-estrategias-de-escalado" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Escalado horizontal de servicios</li>
 <li>Balanceo de carga</li>
-<li>Gestión de dependencias</li>
-<li>Resolución de conflictos</li>
+<li>Caché distribuida</li>
 </ul>
-<h3 id="42-monitoreo">4.2. Monitoreo<a class="headerlink" href="#42-monitoreo" title="Permanent link">&para;</a></h3>
+<h3 id="52-gestion-de-recursos">5.2. Gestión de Recursos<a class="headerlink" href="#52-gestion-de-recursos" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Métricas de rendimiento</li>
-<li>Detección de cuellos de botella</li>
-<li>Análisis de patrones</li>
-<li>Alertas y notificaciones</li>
-</ul>
-<h2 id="5-interfaces-de-comunicacion">5. Interfaces de Comunicación<a class="headerlink" href="#5-interfaces-de-comunicacion" title="Permanent link">&para;</a></h2>
-<h3 id="51-api-interna">5.1. API Interna<a class="headerlink" href="#51-api-interna" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">class</span> <span class="nc">AgentAPI</span><span class="p">:</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Agent</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">Message</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">event_bus</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">event_type</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
-</span></code></pre></div>
-<h3 id="52-api-externa">5.2. API Externa<a class="headerlink" href="#52-api-externa" title="Permanent link">&para;</a></h3>
-<ul>
-<li>REST endpoints para integración</li>
-<li>WebSocket para comunicación en tiempo real</li>
-<li>GraphQL para consultas complejas</li>
-</ul>
-<h2 id="6-ciclo-de-vida-del-agente">6. Ciclo de Vida del Agente<a class="headerlink" href="#6-ciclo-de-vida-del-agente" title="Permanent link">&para;</a></h2>
-<h3 id="61-inicializacion">6.1. Inicialización<a class="headerlink" href="#61-inicializacion" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Carga de configuración</li>
-<li>Registro de capacidades</li>
-<li>Conexión a servicios</li>
-<li>Suscripción a eventos</li>
-</ol>
-<h3 id="62-operacion">6.2. Operación<a class="headerlink" href="#62-operacion" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Recepción de tareas</li>
-<li>Procesamiento</li>
-<li>Aprendizaje</li>
-<li>Transferencias</li>
-</ol>
-<h3 id="63-mantenimiento">6.3. Mantenimiento<a class="headerlink" href="#63-mantenimiento" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Limpieza de memoria</li>
-<li>Actualización de modelos</li>
-<li>Optimización de recursos</li>
-<li>Backup de estado</li>
-</ol>
-<h2 id="7-seguridad-y-control-de-acceso">7. Seguridad y Control de Acceso<a class="headerlink" href="#7-seguridad-y-control-de-acceso" title="Permanent link">&para;</a></h2>
-<h3 id="71-autenticacion">7.1. Autenticación<a class="headerlink" href="#71-autenticacion" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Verificación de identidad</li>
-<li>Gestión de sesiones</li>
-<li>Tokens de acceso</li>
-</ul>
-<h3 id="72-autorizacion">7.2. Autorización<a class="headerlink" href="#72-autorizacion" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Control basado en roles</li>
-<li>Permisos granulares</li>
-<li>Auditoría de acciones</li>
-</ul>
-<h2 id="8-extensibilidad">8. Extensibilidad<a class="headerlink" href="#8-extensibilidad" title="Permanent link">&para;</a></h2>
-<h3 id="81-plugins">8.1. Plugins<a class="headerlink" href="#81-plugins" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">class</span> <span class="nc">AgentPlugin</span><span class="p">:</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">hooks</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">capabilities</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent</span><span class="p">:</span> <span class="n">Agent</span><span class="p">):</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="n">agent</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>        <span class="k">for</span> <span class="n">hook</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hooks</span><span class="p">:</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>            <span class="n">agent</span><span class="o">.</span><span class="n">register_hook</span><span class="p">(</span><span class="n">hook</span><span class="p">)</span>
-</span></code></pre></div>
-<h3 id="82-personalizacion">8.2. Personalización<a class="headerlink" href="#82-personalizacion" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Configuración declarativa</li>
-<li>Inyección de dependencias</li>
-<li>Middleware personalizado</li>
+<li>Límites de recursos por servicio</li>
+<li>Auto-scaling basado en carga</li>
+<li>Recuperación automática</li>
 </ul>
 
 
@@ -1727,7 +1587,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Pie" >
         
           
-          <a href="../system_architecture/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: General">
+          <a href="../system_architecture/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: System Architecture">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1737,7 +1597,7 @@
                 Anterior
               </span>
               <div class="md-ellipsis">
-                General
+                System Architecture
               </div>
             </div>
           </a>

@@ -26,7 +26,7 @@
     
     
       
-        <title>General - SmartHive Documentation</title>
+        <title>System Architecture - SmartHive Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#documentacion-inicial-del-proyecto-smarthive" class="md-skip">
+        <a href="#documentacion-del-proyecto-smarthive" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -104,8 +104,7 @@
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
     <a href="../.." title="SmartHive Documentation" class="md-header__button md-logo" aria-label="SmartHive Documentation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../assets/images/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -122,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              General
+              System Architecture
             
           </span>
         </div>
@@ -306,6 +305,24 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../adr/" class="md-tabs__link">
+          
+  
+  ADRs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../roadmap/features/" class="md-tabs__link">
           
   
@@ -341,8 +358,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="SmartHive Documentation" class="md-nav__button md-logo" aria-label="SmartHive Documentation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../assets/images/logo.png" alt="logo">
 
     </a>
     SmartHive Documentation
@@ -447,7 +463,7 @@
           
   
   <span class="md-ellipsis">
-    General
+    System Architecture
   </span>
   
 
@@ -458,7 +474,7 @@
         
   
   <span class="md-ellipsis">
-    General
+    System Architecture
   </span>
   
 
@@ -508,9 +524,75 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#13-interaccion-entre-modulos" class="md-nav__link">
+  <a href="#13-arquitectura-de-microservicios" class="md-nav__link">
     <span class="md-ellipsis">
-      1.3. Interacción entre Módulos
+      1.3. Arquitectura de Microservicios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3. Arquitectura de Microservicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#control-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Plane
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servicios-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servicios Base
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servicios-especializados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servicios Especializados
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-comunicacion-entre-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Comunicación entre Servicios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Comunicación entre Servicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-message-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Message Queue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-api-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. API Interfaces
     </span>
   </a>
   
@@ -522,64 +604,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-agentes" class="md-nav__link">
+  <a href="#3-monitoreo-y-observabilidad" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Agentes
+      3. Monitoreo y Observabilidad
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Agentes">
+    <nav class="md-nav" aria-label="3. Monitoreo y Observabilidad">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-backendagent" class="md-nav__link">
+  <a href="#31-monitor-cli" class="md-nav__link">
     <span class="md-ellipsis">
-      2.1. BackendAgent
+      3.1. Monitor CLI
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-frontendagent" class="md-nav__link">
+  <a href="#32-metricas-y-alertas" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2. FrontendAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-databaseagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.3. DatabaseAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24-qaagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.4. QAAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#25-devopsagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.5. DevOpsAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#26-orchestratoragent" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.6. OrchestratorAgent
+      3.2. Métricas y Alertas
     </span>
   </a>
   
@@ -591,70 +637,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-swarm-architecture" class="md-nav__link">
+  <a href="#4-despliegue-y-escalabilidad" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Swarm Architecture
+      4. Despliegue y Escalabilidad
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Swarm Architecture">
+    <nav class="md-nav" aria-label="4. Despliegue y Escalabilidad">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-principios-del-enjambre" class="md-nav__link">
+  <a href="#41-despliegue-de-servicios" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1. Principios del Enjambre
+      4.1. Despliegue de Servicios
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-patrones-de-comunicacion" class="md-nav__link">
+  <a href="#42-estrategias-de-escalado" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2. Patrones de Comunicación
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3.2. Patrones de Comunicación">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#321-comunicacion-sincrona" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2.1. Comunicación Síncrona
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#322-comunicacion-asincrona" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2.2. Comunicación Asíncrona
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-sistema-de-personalizacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.3. Sistema de Personalización
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34-integracion-ide" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.4. Integración IDE
+      4.2. Estrategias de Escalado
     </span>
   </a>
   
@@ -666,37 +670,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-flujos-de-trabajo" class="md-nav__link">
+  <a href="#5-seguridad" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Flujos de Trabajo
+      5. Seguridad
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Flujos de Trabajo">
+    <nav class="md-nav" aria-label="5. Seguridad">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-desarrollo" class="md-nav__link">
+  <a href="#51-autenticacion-y-autorizacion" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1. Desarrollo
+      5.1. Autenticación y Autorización
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-pruebas" class="md-nav__link">
+  <a href="#52-comunicacion-segura" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2. Pruebas
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-despliegue" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.3. Despliegue
+      5.2. Comunicación Segura
     </span>
   </a>
   
@@ -704,15 +699,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-proximos-pasos" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Próximos Pasos
-    </span>
-  </a>
   
 </li>
       
@@ -1110,7 +1096,7 @@
             
   
   <span class="md-ellipsis">
-    Roadmap
+    ADRs
   </span>
   
 
@@ -1119,6 +1105,97 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            ADRs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/001-agent-framework-selection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Framework Selection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Roadmap
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Roadmap
           </label>
@@ -1249,9 +1326,75 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#13-interaccion-entre-modulos" class="md-nav__link">
+  <a href="#13-arquitectura-de-microservicios" class="md-nav__link">
     <span class="md-ellipsis">
-      1.3. Interacción entre Módulos
+      1.3. Arquitectura de Microservicios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3. Arquitectura de Microservicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#control-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Plane
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servicios-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servicios Base
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servicios-especializados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servicios Especializados
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-comunicacion-entre-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Comunicación entre Servicios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Comunicación entre Servicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-message-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Message Queue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-api-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. API Interfaces
     </span>
   </a>
   
@@ -1263,64 +1406,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-agentes" class="md-nav__link">
+  <a href="#3-monitoreo-y-observabilidad" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Agentes
+      3. Monitoreo y Observabilidad
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Agentes">
+    <nav class="md-nav" aria-label="3. Monitoreo y Observabilidad">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-backendagent" class="md-nav__link">
+  <a href="#31-monitor-cli" class="md-nav__link">
     <span class="md-ellipsis">
-      2.1. BackendAgent
+      3.1. Monitor CLI
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-frontendagent" class="md-nav__link">
+  <a href="#32-metricas-y-alertas" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2. FrontendAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-databaseagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.3. DatabaseAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24-qaagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.4. QAAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#25-devopsagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.5. DevOpsAgent
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#26-orchestratoragent" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.6. OrchestratorAgent
+      3.2. Métricas y Alertas
     </span>
   </a>
   
@@ -1332,70 +1439,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-swarm-architecture" class="md-nav__link">
+  <a href="#4-despliegue-y-escalabilidad" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Swarm Architecture
+      4. Despliegue y Escalabilidad
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Swarm Architecture">
+    <nav class="md-nav" aria-label="4. Despliegue y Escalabilidad">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-principios-del-enjambre" class="md-nav__link">
+  <a href="#41-despliegue-de-servicios" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1. Principios del Enjambre
+      4.1. Despliegue de Servicios
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-patrones-de-comunicacion" class="md-nav__link">
+  <a href="#42-estrategias-de-escalado" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2. Patrones de Comunicación
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3.2. Patrones de Comunicación">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#321-comunicacion-sincrona" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2.1. Comunicación Síncrona
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#322-comunicacion-asincrona" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2.2. Comunicación Asíncrona
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-sistema-de-personalizacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.3. Sistema de Personalización
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34-integracion-ide" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.4. Integración IDE
+      4.2. Estrategias de Escalado
     </span>
   </a>
   
@@ -1407,37 +1472,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-flujos-de-trabajo" class="md-nav__link">
+  <a href="#5-seguridad" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Flujos de Trabajo
+      5. Seguridad
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Flujos de Trabajo">
+    <nav class="md-nav" aria-label="5. Seguridad">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-desarrollo" class="md-nav__link">
+  <a href="#51-autenticacion-y-autorizacion" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1. Desarrollo
+      5.1. Autenticación y Autorización
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-pruebas" class="md-nav__link">
+  <a href="#52-comunicacion-segura" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2. Pruebas
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-despliegue" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.3. Despliegue
+      5.2. Comunicación Segura
     </span>
   </a>
   
@@ -1445,15 +1501,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-proximos-pasos" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Próximos Pasos
-    </span>
-  </a>
   
 </li>
       
@@ -1475,171 +1522,124 @@
   
 
 
-<h1 id="documentacion-inicial-del-proyecto-smarthive">Documentación Inicial del Proyecto SmartHive<a class="headerlink" href="#documentacion-inicial-del-proyecto-smarthive" title="Permanent link">&para;</a></h1>
-<p>El proyecto <strong>SmartHive</strong> es un ecosistema de agentes multiuso diseñado para automatizar y optimizar tareas relacionadas con el desarrollo y mantenimiento de software en el contexto de una agencia inmobiliaria. Esta documentación proporciona una guía inicial para entender y trabajar con su arquitectura y componentes.</p>
+<h1 id="documentacion-del-proyecto-smarthive">Documentación del Proyecto SmartHive<a class="headerlink" href="#documentacion-del-proyecto-smarthive" title="Permanent link">&para;</a></h1>
+<p>El proyecto <strong>SmartHive</strong> es un ecosistema de agentes multiuso diseñado para automatizar y optimizar tareas relacionadas con el desarrollo y mantenimiento de software en el contexto de una agencia inmobiliaria. Esta documentación proporciona una guía para entender y trabajar con su arquitectura y componentes.</p>
 <hr />
 <h2 id="1-arquitectura-del-sistema">1. Arquitectura del Sistema<a class="headerlink" href="#1-arquitectura-del-sistema" title="Permanent link">&para;</a></h2>
-<p>El sistema se organiza siguiendo principios de modularidad y separación de responsabilidades, garantizando escalabilidad y mantenibilidad. Las carpetas principales incluyen:</p>
+<p>El sistema se organiza siguiendo una arquitectura orientada a microservicios utilizando el framework llama-agents. Las carpetas principales incluyen:</p>
 <h3 id="11-estructura-general">1.1. Estructura General<a class="headerlink" href="#11-estructura-general" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>.
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── README.md
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── pyproject.toml
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── src
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   └── smart_hive
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│       ├── configs
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│       │   ├── agents
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│       │   ├── data
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│       │   └── tools
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│       ├── docs
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│       │   ├── architecture
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│       │   ├── development
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│       │   ├── roadmap
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│       │   └── workflows
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│       └── main.py
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>└── tests
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── smart_hive
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   ├── services
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   │   ├── resource_manager
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   │   ├── task_coordinator
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   │   ├── error_handler
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   │   ├── backend
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   │   ├── frontend
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   │   └── qa
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   ├── core
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   │   ├── control_plane
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   │   ├── message_queue
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   │   └── monitor
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   ├── config
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│   │   ├── agents
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│   │   └── services
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│   └── main.py
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>├── docs
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│   ├── architecture
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>│   ├── development
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>│   ├── roadmap
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>│   └── workflows
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>└── tests
 </span></code></pre></div>
 <h3 id="12-descripcion-de-carpetas">1.2. Descripción de Carpetas<a class="headerlink" href="#12-descripcion-de-carpetas" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>configs/agents:</strong> Contiene los agentes especializados, cada uno con un rol específico en el sistema (backend, frontend, base de datos, QA, DevOps, y orquestador).</li>
-<li><strong>configs/data:</strong> Define las variables de contexto y los esquemas de datos compartidos.</li>
-<li><strong>configs/tools:</strong> Herramientas de apoyo para cada agente, como manejo de APIs, bases de datos, pruebas y despliegues.</li>
-<li><strong>docs:</strong> Documentación estructurada del sistema, incluyendo arquitectura, guías de desarrollo, flujos de trabajo y roadmap.</li>
-<li><strong>tests:</strong> Pruebas unitarias y de integración para garantizar la calidad y funcionalidad del sistema.</li>
+<li><strong>services/</strong>: Servicios independientes, cada uno con su propia lógica y responsabilidades</li>
+<li><strong>core/</strong>: Componentes centrales del sistema (control plane, message queue)</li>
+<li><strong>config/</strong>: Configuraciones para agentes y servicios</li>
+<li><strong>docs/</strong>: Documentación estructurada del sistema</li>
+<li><strong>tests/</strong>: Pruebas unitarias y de integración</li>
 </ul>
-<h3 id="13-interaccion-entre-modulos">1.3. Interacción entre Módulos<a class="headerlink" href="#13-interaccion-entre-modulos" title="Permanent link">&para;</a></h3>
-<p>La arquitectura está diseñada en torno a agentes especializados que interactúan entre sí. A continuación, se describe cómo se comunican los módulos:</p>
-<ul>
-<li><strong>Backend ↔ Database:</strong> El BackendAgent consume los esquemas definidos por el DatabaseAgent para exponer APIs.</li>
-<li><strong>Frontend ↔ Backend:</strong> El FrontendAgent se conecta a las APIs proporcionadas por el BackendAgent para renderizar interfaces dinámicas.</li>
-<li><strong>QA ↔ Backend y Frontend:</strong> El QAAgent realiza pruebas tanto en el backend como en el frontend, asegurando que ambas partes funcionen correctamente.</li>
-<li><strong>Orchestrator ↔ Todos los Agentes:</strong> El OrchestratorAgent coordina las tareas entre todos los agentes.</li>
-</ul>
-<hr />
-<h2 id="2-agentes">2. Agentes<a class="headerlink" href="#2-agentes" title="Permanent link">&para;</a></h2>
-<p>Cada agente tiene un propósito y responsabilidades claras. Aquí se detalla su función:</p>
-<h3 id="21-backendagent">2.1. BackendAgent<a class="headerlink" href="#21-backendagent" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Rol:</strong> Desarrollo y mantenimiento de las APIs y lógica de negocio.</li>
-<li><strong>Ubicación:</strong> <code>configs/agents/backend_agent.py</code></li>
-<li><strong>Responsabilidades:</strong></li>
-<li>Crear y gestionar controladores y servicios.</li>
-<li>Implementar validaciones y lógica empresarial.</li>
-<li>Integrarse con las bases de datos.</li>
-</ul>
-<h3 id="22-frontendagent">2.2. FrontendAgent<a class="headerlink" href="#22-frontendagent" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Rol:</strong> Desarrollo de interfaces de usuario.</li>
-<li><strong>Ubicación:</strong> <code>configs/agents/frontend_agent.py</code></li>
-<li><strong>Responsabilidades:</strong></li>
-<li>Diseñar y construir componentes UI con Qwik.</li>
-<li>Conectar el frontend con las APIs.</li>
-<li>Asegurar una experiencia de usuario fluida.</li>
-</ul>
-<h3 id="23-databaseagent">2.3. DatabaseAgent<a class="headerlink" href="#23-databaseagent" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Rol:</strong> Gestión y optimización de bases de datos.</li>
-<li><strong>Ubicación:</strong> <code>configs/agents/database_agent.py</code></li>
-<li><strong>Responsabilidades:</strong></li>
-<li>Diseñar esquemas de bases de datos.</li>
-<li>Implementar migraciones y consultas optimizadas.</li>
-<li>Mantener la integridad y consistencia de los datos.</li>
-</ul>
-<h3 id="24-qaagent">2.4. QAAgent<a class="headerlink" href="#24-qaagent" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Rol:</strong> Garantizar la calidad del software.</li>
-<li><strong>Ubicación:</strong> <code>configs/agents/qa_agent.py</code></li>
-<li><strong>Responsabilidades:</strong></li>
-<li>Ejecutar pruebas automatizadas.</li>
-<li>Generar reportes de cobertura y errores.</li>
-<li>Validar flujos de trabajo completos.</li>
-</ul>
-<h3 id="25-devopsagent">2.5. DevOpsAgent<a class="headerlink" href="#25-devopsagent" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Rol:</strong> Automatización de despliegues y mantenimiento.</li>
-<li><strong>Ubicación:</strong> <code>configs/agents/devops_agent.py</code></li>
-<li><strong>Responsabilidades:</strong></li>
-<li>Configurar pipelines de CI/CD.</li>
-<li>Monitorizar rendimiento y logs.</li>
-<li>Administrar infraestructura en la nube.</li>
-</ul>
-<h3 id="26-orchestratoragent">2.6. OrchestratorAgent<a class="headerlink" href="#26-orchestratoragent" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Rol:</strong> Coordinar las tareas de los demás agentes.</li>
-<li><strong>Ubicación:</strong> <code>configs/agents/orchestrator_agent.py</code></li>
-<li><strong>Responsabilidades:</strong></li>
-<li>Gestionar dependencias entre agentes.</li>
-<li>Dividir tareas en subtareas asignables.</li>
-<li>Monitorizar y reportar progreso.</li>
-</ul>
-<hr />
-<h2 id="3-swarm-architecture">3. Swarm Architecture<a class="headerlink" href="#3-swarm-architecture" title="Permanent link">&para;</a></h2>
-<p>SmartHive implementa una arquitectura de enjambre (swarm) inspirada en herramientas modernas como Windsurf, Codium y Zed, pero con un enfoque único en la especialización y personalización de agentes.</p>
-<h3 id="31-principios-del-enjambre">3.1. Principios del Enjambre<a class="headerlink" href="#31-principios-del-enjambre" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Especialización:</strong> Cada agente es experto en su dominio específico.</li>
-<li><strong>Autonomía:</strong> Los agentes pueden tomar decisiones independientes dentro de su dominio.</li>
-<li><strong>Colaboración:</strong> Trabajo coordinado para resolver tareas complejas.</li>
-<li><strong>Adaptabilidad:</strong> Aprendizaje continuo basado en interacciones con el usuario.</li>
-</ul>
-<h3 id="32-patrones-de-comunicacion">3.2. Patrones de Comunicación<a class="headerlink" href="#32-patrones-de-comunicacion" title="Permanent link">&para;</a></h3>
-<h4 id="321-comunicacion-sincrona">3.2.1. Comunicación Síncrona<a class="headerlink" href="#321-comunicacion-sincrona" title="Permanent link">&para;</a></h4>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Usuario -&gt; OrchestratorAgent -&gt; Agente Especializado
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>           ^                          |
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>           |                          v
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>           +--- Respuesta Inmediata ---+
+<h3 id="13-arquitectura-de-microservicios">1.3. Arquitectura de Microservicios<a class="headerlink" href="#13-arquitectura-de-microservicios" title="Permanent link">&para;</a></h3>
+<p>La arquitectura está diseñada como un conjunto de servicios independientes que se comunican a través de un message queue centralizado:</p>
+<h4 id="control-plane">Control Plane<a class="headerlink" href="#control-plane" title="Permanent link">&para;</a></h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">llama_agents</span> <span class="kn">import</span> <span class="n">ControlPlaneServer</span><span class="p">,</span> <span class="n">AgentOrchestrator</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">control_plane</span> <span class="o">=</span> <span class="n">ControlPlaneServer</span><span class="p">(</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">message_queue</span><span class="o">=</span><span class="n">message_queue</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">orchestrator</span><span class="o">=</span><span class="n">AgentOrchestrator</span><span class="p">(</span><span class="n">llm</span><span class="o">=</span><span class="n">OpenAI</span><span class="p">())</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">)</span>
 </span></code></pre></div>
-- Usado para tareas que requieren respuesta inmediata
-- Ejemplos: consultas de código, sugerencias de diseño</p>
-<h4 id="322-comunicacion-asincrona">3.2.2. Comunicación Asíncrona<a class="headerlink" href="#322-comunicacion-asincrona" title="Permanent link">&para;</a></h4>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Usuario -&gt; OrchestratorAgent -&gt; Cola de Tareas
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                                    |
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                                    v
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>                            Agentes Especializados
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>                                    |
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>                                    v
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>                            Sistema de Notificaciones
+<h4 id="servicios-base">Servicios Base<a class="headerlink" href="#servicios-base" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>ResourceManagerService</strong>: Gestión de recursos computacionales</li>
+<li><strong>TaskCoordinatorService</strong>: Coordinación de tareas</li>
+<li><strong>ErrorHandlerService</strong>: Manejo de errores y recuperación</li>
+</ul>
+<h4 id="servicios-especializados">Servicios Especializados<a class="headerlink" href="#servicios-especializados" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>BackendService</strong>: Desarrollo backend</li>
+<li><strong>FrontendService</strong>: Desarrollo frontend</li>
+<li><strong>QAService</strong>: Testing y calidad</li>
+</ul>
+<hr />
+<h2 id="2-comunicacion-entre-servicios">2. Comunicación entre Servicios<a class="headerlink" href="#2-comunicacion-entre-servicios" title="Permanent link">&para;</a></h2>
+<h3 id="21-message-queue">2.1. Message Queue<a class="headerlink" href="#21-message-queue" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">llama_agents</span> <span class="kn">import</span> <span class="n">SimpleMessageQueue</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">message_queue</span> <span class="o">=</span> <span class="n">SimpleMessageQueue</span><span class="p">()</span>
 </span></code></pre></div>
-- Usado para tareas largas o que requieren múltiples agentes
-- Ejemplos: generación de código, pruebas automatizadas</p>
-<h3 id="33-sistema-de-personalizacion">3.3. Sistema de Personalización<a class="headerlink" href="#33-sistema-de-personalizacion" title="Permanent link">&para;</a></h3>
+<h3 id="22-api-interfaces">2.2. API Interfaces<a class="headerlink" href="#22-api-interfaces" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Perfil de Usuario:</strong> Almacena preferencias y patrones de desarrollo</li>
-<li><strong>Contexto de Proyecto:</strong> Mantiene información específica del proyecto</li>
-<li><strong>Historial de Interacciones:</strong> Base para el aprendizaje y mejora continua</li>
-</ul>
-<h3 id="34-integracion-ide">3.4. Integración IDE<a class="headerlink" href="#34-integracion-ide" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Editor Nativo:</strong> Integración directa con el entorno de desarrollo</li>
-<li><strong>Extensiones:</strong> Plugins para IDEs populares</li>
-<li><strong>API REST:</strong> Endpoints para integración con herramientas externas</li>
+<li>REST APIs para comunicación síncrona</li>
+<li>Webhooks para eventos asíncronos</li>
+<li>GraphQL para consultas complejas</li>
 </ul>
 <hr />
-<h2 id="4-flujos-de-trabajo">4. Flujos de Trabajo<a class="headerlink" href="#4-flujos-de-trabajo" title="Permanent link">&para;</a></h2>
-<h3 id="41-desarrollo">4.1. Desarrollo<a class="headerlink" href="#41-desarrollo" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Inicio:</strong> El OrchestratorAgent recibe una tarea de alto nivel.</li>
-<li><strong>Asignación:</strong> Divide la tarea en subtareas y las delega a los agentes correspondientes.</li>
-<li><strong>Ejecución:</strong> Los agentes desarrollan, prueban e integran sus partes.</li>
-<li><strong>Entrega:</strong> Los resultados se consolidan y despliegan en un entorno de prueba.</li>
-</ol>
-<h3 id="42-pruebas">4.2. Pruebas<a class="headerlink" href="#42-pruebas" title="Permanent link">&para;</a></h3>
+<h2 id="3-monitoreo-y-observabilidad">3. Monitoreo y Observabilidad<a class="headerlink" href="#3-monitoreo-y-observabilidad" title="Permanent link">&para;</a></h2>
+<h3 id="31-monitor-cli">3.1. Monitor CLI<a class="headerlink" href="#31-monitor-cli" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>llama-agents<span class="w"> </span>monitor<span class="w"> </span>--control-plane-url<span class="w"> </span>http://localhost:8000
+</span></code></pre></div>
+<h3 id="32-metricas-y-alertas">3.2. Métricas y Alertas<a class="headerlink" href="#32-metricas-y-alertas" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>QAAgent</strong> ejecuta pruebas unitarias y de integración.</li>
-<li>Genera reportes detallados que retroalimentan a los agentes de desarrollo.</li>
-</ul>
-<h3 id="43-despliegue">4.3. Despliegue<a class="headerlink" href="#43-despliegue" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>DevOpsAgent</strong> automatiza el despliegue del sistema en producción, asegurando redundancia y escalabilidad.</li>
+<li>Latencia de procesamiento</li>
+<li>Uso de recursos</li>
+<li>Tasa de éxito/error</li>
+<li>Transferencias entre agentes</li>
 </ul>
 <hr />
-<h2 id="5-proximos-pasos">5. Próximos Pasos<a class="headerlink" href="#5-proximos-pasos" title="Permanent link">&para;</a></h2>
+<h2 id="4-despliegue-y-escalabilidad">4. Despliegue y Escalabilidad<a class="headerlink" href="#4-despliegue-y-escalabilidad" title="Permanent link">&para;</a></h2>
+<h3 id="41-despliegue-de-servicios">4.1. Despliegue de Servicios<a class="headerlink" href="#41-despliegue-de-servicios" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">llama_agents</span> <span class="kn">import</span> <span class="n">ServerLauncher</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">launcher</span> <span class="o">=</span> <span class="n">ServerLauncher</span><span class="p">(</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="p">[</span><span class="n">service1</span><span class="p">,</span> <span class="n">service2</span><span class="p">],</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">control_plane</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">message_queue</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="42-estrategias-de-escalado">4.2. Estrategias de Escalado<a class="headerlink" href="#42-estrategias-de-escalado" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Completar la documentación de los módulos individuales en <code>docs/development/</code>.</li>
-<li>Desarrollar casos de prueba iniciales en <code>tests/</code>.</li>
-<li>Configurar el pipeline de CI/CD en colaboración con el DevOpsAgent.</li>
+<li>Escalado horizontal de servicios</li>
+<li>Balanceo de carga</li>
+<li>Auto-scaling basado en carga</li>
 </ul>
 <hr />
-<p>Esta documentación inicial sirve como base para organizar y estructurar el proyecto SmartHive. Conforme se desarrollen los módulos y funcionalidades, se actualizará cada sección con detalles más específicos.</p>
+<h2 id="5-seguridad">5. Seguridad<a class="headerlink" href="#5-seguridad" title="Permanent link">&para;</a></h2>
+<h3 id="51-autenticacion-y-autorizacion">5.1. Autenticación y Autorización<a class="headerlink" href="#51-autenticacion-y-autorizacion" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Autenticación de servicios</li>
+<li>Control de acceso basado en roles</li>
+<li>Auditoría de acciones</li>
+</ul>
+<h3 id="52-comunicacion-segura">5.2. Comunicación Segura<a class="headerlink" href="#52-comunicacion-segura" title="Permanent link">&para;</a></h3>
+<ul>
+<li>TLS para todas las comunicaciones</li>
+<li>Cifrado de datos sensibles</li>
+<li>Validación de mensajes</li>
+</ul>
 
 
 
