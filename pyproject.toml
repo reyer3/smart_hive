@@ -19,6 +19,7 @@ swarm = {git = "https://github.com/openai/swarm.git"}
 mkdocs = "^1.6.1"
 mkdocs-material = "^9.5.48"
 mkdocs-minify-plugin = "^0.7.1"
+deepeval = {version = "^2.0.6", python = ">=3.12,<3.13"}
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.1.0"
