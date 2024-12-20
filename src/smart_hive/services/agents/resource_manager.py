@@ -34,9 +34,22 @@ class ResourceManager(AgentService):
         default_requirements = AGENT_CONFIGS.get(agent_type, {}).get("requirements", {})
         final_requirements = {**default_requirements, **requirements}
             
+        # Check if we have enough resources
+        total_cpu = sum(alloc["cpu"] for alloc in self.resource_allocations.values())
+        total_memory = sum(alloc["memory"] for alloc in self.resource_allocations.values())
+        
+        requested_cpu = final_requirements.get("cpu", 1)
+        requested_memory = final_requirements.get("memory", 512)
+        
+        # Simple resource limits
+        if total_cpu + requested_cpu > 8:  # Max 8 CPUs
+            return False
+        if total_memory + requested_memory > 8192:  # Max 8GB RAM
+            return False
+            
         self.resource_allocations[agent_id] = {
-            "cpu": final_requirements.get("cpu", 1),
-            "memory": final_requirements.get("memory", 512),
+            "cpu": requested_cpu,
+            "memory": requested_memory,
             "status": "allocated"
         }
         return True
@@ -50,5 +63,10 @@ class ResourceManager(AgentService):
         return True
 
     async def get_resource_status(self, agent_id: str) -> Optional[Dict]:
-        """Get current resource allocation for an agent."""
-        return self.resource_allocations.get(agent_id)
+        """Get the current resource allocation for an agent."""
+        if agent_id not in self.resource_allocations:
+            return None
+            
+        status = self.resource_allocations[agent_id].copy()
+        del status["status"]  # Remove status from resources
+        return status
