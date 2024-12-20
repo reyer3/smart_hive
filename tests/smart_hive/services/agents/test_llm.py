@@ -2,6 +2,9 @@
 Tests for LLM agents using DeepEval.
 """
 
+import os
+from typing import AsyncGenerator
+
 import pytest
 from deepeval import assert_test
 from deepeval.metrics import (
@@ -11,22 +14,34 @@ from deepeval.metrics import (
 )
 from deepeval.test_case import LLMTestCase
 
+from smart_hive.configs.openai_config import OpenAIConfig
 from smart_hive.services.control_plane.main import (
     SmartHiveOrchestrator,
     AgentRequest,
     set_orchestrator,
 )
 
+
 @pytest.fixture
-async def orchestrator():
+def openai_config() -> OpenAIConfig:
+    """Create OpenAI config for testing."""
+    config = OpenAIConfig.from_env()
+    if not config.validate_api_key():
+        pytest.skip("OpenAI API key not configured")
+    return config
+
+
+@pytest.fixture
+async def orchestrator() -> AsyncGenerator[SmartHiveOrchestrator, None]:
     """Create a test orchestrator."""
     orchestrator = SmartHiveOrchestrator()
     set_orchestrator(orchestrator)
     yield orchestrator
     await orchestrator.reset()
 
+
 @pytest.mark.asyncio
-async def test_backend_agent_response(orchestrator):
+async def test_backend_agent_response(orchestrator: SmartHiveOrchestrator, openai_config: OpenAIConfig):
     """Test that backend agent responses are relevant and faithful."""
     # Create an agent
     request = AgentRequest(
@@ -47,11 +62,26 @@ async def test_backend_agent_response(orchestrator):
         ]
     )
 
-    # Define metrics
+    # Configure metrics with OpenAI settings
     metrics = [
-        AnswerRelevancyMetric(threshold=0.7),
-        FaithfulnessMetric(threshold=0.7),
-        ContextualRelevancyMetric(threshold=0.7)
+        AnswerRelevancyMetric(
+            threshold=0.7,
+            openai_api_key=openai_config.api_key,
+            model=openai_config.model,
+            temperature=openai_config.temperature
+        ),
+        FaithfulnessMetric(
+            threshold=0.7,
+            openai_api_key=openai_config.api_key,
+            model=openai_config.model,
+            temperature=openai_config.temperature
+        ),
+        ContextualRelevancyMetric(
+            threshold=0.7,
+            openai_api_key=openai_config.api_key,
+            model=openai_config.model,
+            temperature=openai_config.temperature
+        )
     ]
 
     # Assert test passes all metrics
